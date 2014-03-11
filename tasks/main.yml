@@ -21,8 +21,8 @@
     owner={{ ansible_ssh_user }}
     group={{ ansible_ssh_user }}
   with_items:
-    - '{{ deploy_logs_dir }}'
-    - '{{ deploy_assets_dir }}'
+    - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.logs_path }}'
+    - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.assets_path }}'
 
 - name: make sure that files/directories that are going to be symlinks do not exist
   file: >
