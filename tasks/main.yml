@@ -30,8 +30,8 @@
     state=absent
     force=yes
   with_items:
-    - '{{ deploy_logs_dir }}'
-    - '{{ deploy_assets_dir }}'
+    - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.logs_path }}'
+    - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.assets_path }}'
 
 - name: create symlinks to shared directories
   file: >
