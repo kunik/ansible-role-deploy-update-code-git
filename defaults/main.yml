@@ -6,5 +6,3 @@ deploy_update_code_git:
 deploy_update_code_git_defaults:
   logs_path: log
   assets_path: public/assets
-
-deploy_accept_host_key: yes

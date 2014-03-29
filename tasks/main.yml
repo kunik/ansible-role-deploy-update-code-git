@@ -12,7 +12,7 @@
     repo={{ deploy_update_code_git.repository }}
     version={{ deploy_update_code_git.version }}
     depth=1
-    accept_hostkey={{ deploy_accept_host_key }}
+    accept_hostkey=yes
   notify: symlink release
 
 - name: create shared directories
