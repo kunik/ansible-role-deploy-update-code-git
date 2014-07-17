@@ -4,5 +4,7 @@ deploy_update_code_git:
   version: HEAD
 
 deploy_update_code_git_defaults:
+  tmp_path: tmp
+  pids_path: tmp/pids
   logs_path: log
   assets_path: public/assets

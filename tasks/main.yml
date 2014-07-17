@@ -23,6 +23,18 @@
   with_items:
     - '{{ deploy_logs_dir }}'
     - '{{ deploy_assets_dir }}'
+    - '{{ deploy_pids_dir }}'
+
+- name: define tmp dir path
+  set_fact: >
+    deploy_tmp_dir='{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.tmp_path }}'
+
+- name: make sure that tmp dir exists
+  file: >
+    path='{{ deploy_tmp_dir }}'
+    state=directory
+    owner={{ ansible_ssh_user }}
+    group={{ ansible_ssh_user }}
 
 - name: make sure that files/directories that are going to be symlinks do not exist
   file: >
@@ -32,6 +44,7 @@
   with_items:
     - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.logs_path }}'
     - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.assets_path }}'
+    - '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.pids_path }}'
 
 - name: create symlinks to shared directories
   file: >
@@ -44,3 +57,4 @@
   with_items:
     - { src: '{{ deploy_logs_dir }}',   dest: '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.logs_path }}' }
     - { src: '{{ deploy_assets_dir }}', dest: '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.assets_path }}' }
+    - { src: '{{ deploy_pids_dir }}',   dest: '{{ deploy_release_dir }}/{{ deploy_update_code_git_defaults.pids_path }}' }
