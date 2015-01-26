@@ -16,6 +16,10 @@
     accept_hostkey=yes
   notify: symlink release
 
+- name: set SCM version
+  set_fact: >
+    deploy_scm_version='{{ deploy_update_code_git.version }}'
+
 - name: create shared directories
   file: >
     path='{{ item }}'
