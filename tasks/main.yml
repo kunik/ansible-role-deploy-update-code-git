@@ -5,7 +5,7 @@
     state=directory
     owner={{ ansible_ssh_user }}
     group={{ ansible_ssh_user }}
-  notify: 'cleanup {{ deploy_application_name }}'
+  notify: 'cleanup application releases'
 
 - name: clone code to release directory
   git: >

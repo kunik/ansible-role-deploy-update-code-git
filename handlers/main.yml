@@ -8,7 +8,7 @@
     group={{ ansible_ssh_user }}
     force=yes
 
-- name: 'cleanup {{ deploy_application_name }}'
+- name: 'cleanup application releases'
   shell: "ls -1 | sort -r | awk 'NR>{{ deploy_update_code_git.preserve_releases | default(5) }}' | xargs rm -rf"
   args:
     chdir: '{{ deploy_application_home }}/{{ deploy_metadata_defaults.release_dir_name }}'
